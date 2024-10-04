@@ -117,7 +117,7 @@ def toggle():
     return jsonify(doors_serializable)
 
 @app.route("/open-half", methods=["POST"])
-def open_close(seconds):
+def open_close():
     password = get_password()
     # Create an event loop or reuse the existing one
     loop = asyncio.new_event_loop()
@@ -128,7 +128,7 @@ def open_close(seconds):
 
     if doors:
         door = doors[0]
-        door_state = loop.run_until_complete(do_open_half(door, seconds))
+        door_state = loop.run_until_complete(do_open_half(door, 2))
 
     # Convert the devices to JSON-friendly format (e.g., using str())
     doors_serializable = [str(door) for door in doors]
