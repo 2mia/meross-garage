@@ -93,7 +93,6 @@ def get_password():
 @app.route("/toggle", methods=["POST"])
 def toggle():
     password = get_password()
-    print(f"Received password: {password}")
     # Create an event loop or reuse the existing one
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
@@ -103,10 +102,6 @@ def toggle():
 
     if doors:
         door = doors[0]
-        
-        logging.info("Methods of the first device:")
-        logging.info(dir(door))  # Print all methods of the door
-
         # Run async_update and get the state in the same event loop
         door_state = loop.run_until_complete(do_press_button(door))
 
