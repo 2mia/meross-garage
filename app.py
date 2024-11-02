@@ -24,7 +24,7 @@ logging.basicConfig(
 
 @app.route('/')
 def home():
-    return "go away"
+    return "go awaay"
 
 async def get_doors(password):
     # Initialize the Meross HTTP client asynchronously
